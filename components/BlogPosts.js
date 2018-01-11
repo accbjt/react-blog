@@ -29,13 +29,10 @@ export default class BlogPosts extends React.Component {
       <View style={styles.container}>
         <FlatList
           data={this.state.blogPosts}
-          renderItem={({item}) => (
+          renderItem={({ item }) => (
             <BlogPost {...item} />
           )}
-          // selected={
-          //   // Can be any prop that doesn't collide with existing props
-          //   this.state.selected // A change to selected should re-render FlatList
-          // }
+          keyExtractor={(item, index) => index}
         />
       </View>
     )
