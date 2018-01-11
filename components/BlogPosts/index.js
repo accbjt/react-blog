@@ -1,10 +1,12 @@
 import React from 'react'
 import { StyleSheet, FlatList, View } from 'react-native'
-import BlogPost from './BlogPost'
+import BlogPost from '../BlogPost'
 
 const styles = StyleSheet.create({
-  container: {
+  content: {
     flex: 1,
+    alignItems: 'center',
+    backgroundColor: '#ff3465',
   },
 })
 
@@ -26,7 +28,7 @@ export default class BlogPosts extends React.Component {
 
   render () {
     return (
-      <View style={styles.container}>
+      <View style={styles.content}>
         <FlatList
           data={this.state.blogPosts}
           renderItem={({ item }) => (

@@ -14,7 +14,7 @@ export default () => (
       <Scene
         key='blogWebView'
         component={BlogWebView}
-        title='Invision Post'
+        // title='Invision Post'
       />
     </Scene>
   </Router>
