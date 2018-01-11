@@ -1,0 +1,48 @@
+{
+  "parser": "babel-eslint",
+  "plugins": [
+    "react",
+    "react-native"
+  ],
+  "parserOptions": {
+    "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+    }
+  },
+  "extends" : [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb"
+  ],
+  globals: {
+    "fetch": true
+  },
+  "rules": {
+    "semi" : [2, "never"],
+    "max-len": [2, 120, 2, { "ignoreUrls": true }],
+    "react/jsx-space-before-closing": [0, "always"],
+    "generator-star-spacing": 1,
+    "jsx-quotes": [2, "prefer-single"],
+
+    "react/jsx-filename-extension": 0,
+    "react/jsx-closing-bracket-location": 1,
+    "react/forbid-prop-types": 0,
+
+    "global/require": 0,
+
+    "import/no-unresolved": 0,
+    "import/no-named-as-default": 1,
+    "import/extensions": 0,
+    "import/no-extraneous-dependencies": 0,
+    "import/prefer-default-export": 1,
+    "arrow-parens": 0,
+    "space-before-function-paren": ["error", "always"],
+    "no-unused-expressions": [2,
+      {
+        "allowShortCircuit": true,
+        "allowTernary": true
+      }
+    ]
+  }
+}
