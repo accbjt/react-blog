@@ -43,6 +43,7 @@
         "allowShortCircuit": true,
         "allowTernary": true
       }
-    ]
+    ],
+    "class-methods-use-this": 0
   }
 }

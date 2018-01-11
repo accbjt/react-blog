@@ -15,15 +15,22 @@ export default class BlogPosts extends React.Component {
     super()
 
     this.state = { blogPosts: [] }
+    this.onMount = this.onMount
   }
 
   async componentDidMount () {
     const fetchResponse = await fetch('https://dl.dropboxusercontent.com/s/cpl8uh9mloelmz2/invision-blog.json?dl=0')
     const response = await fetchResponse.json()
 
-    this.setState({
-      blogPosts: response.rss.channel.item,
+    this.onMount(() => {
+      this.setState({
+        blogPosts: response.rss.channel.item,
+      })
     })
+  }
+
+  onMount (callback) {
+    callback()
   }
 
   render () {
