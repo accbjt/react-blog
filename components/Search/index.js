@@ -1,6 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { TextInput } from 'react-native'
+import { StyleSheet, TextInput } from 'react-native'
+
+const styles = StyleSheet.create({
+  searchInput: {
+    height: 40,
+    backgroundColor: 'white',
+    borderColor: 'gray',
+    borderWidth: 1,
+    width: '100%',
+    padding: 10,
+    textAlign: 'center',
+  },
+})
 
 export default class Search extends Component {
   constructor (props) {
@@ -28,15 +40,7 @@ export default class Search extends Component {
   render () {
     return (
       <TextInput
-        style={{
-          height: 40,
-          backgroundColor: 'white',
-          borderColor: 'gray',
-          borderWidth: 1,
-          width: '100%',
-          padding: 10,
-          textAlign: 'center',
-        }}
+        style={styles.searchInput}
         onChangeText={(text) => { this.onTextChange(text) }}
         onFocus={() => { this.onTextFocus() }}
         onBlur={() => { this.onTextBlur() }}
