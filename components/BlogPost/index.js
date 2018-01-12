@@ -6,13 +6,11 @@ import { Actions } from 'react-native-router-flux'
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-    width: 300,
-    paddingTop: 10,
-    paddingBottom: 20,
-    paddingLeft: 20,
-    paddingRight: 20,
+    padding: 20,
     borderRadius: 10,
-    margin: 10,
+    marginTop: 20,
+    marginRight: 20,
+    marginLeft: 20,
   },
   title: {
     fontWeight: 'bold',

@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, FlatList, View } from 'react-native'
 import BlogPost from '../BlogPost'
+import Search from '../Search'
 
 const styles = StyleSheet.create({
   content: {
@@ -14,8 +15,9 @@ export default class BlogPosts extends React.Component {
   constructor () {
     super()
 
-    this.state = { blogPosts: [] }
+    this.state = { blogPosts: [], filteredPosts: [] }
     this.onMount = this.onMount
+    this.filterPosts = this.filterPosts.bind(this)
   }
 
   async componentDidMount () {
@@ -23,8 +25,11 @@ export default class BlogPosts extends React.Component {
     const response = await fetchResponse.json()
 
     this.onMount(() => {
+      const items = response.rss.channel.item
+
       this.setState({
-        blogPosts: response.rss.channel.item,
+        blogPosts: items,
+        filteredPosts: items,
       })
     })
   }
@@ -33,11 +38,30 @@ export default class BlogPosts extends React.Component {
     callback()
   }
 
+  filterPosts (text) {
+    const filteredPosts = this.state.blogPosts.filter(post => (
+      post.title.toLowerCase().includes(text.toLowerCase())
+    ))
+
+    this.setState({ filteredPosts })
+  }
+
+  resetPosts () {
+    this.setState({ filteredPosts: this.state.blogPosts })
+  }
+
   render () {
     return (
       <View style={styles.content}>
+        <Search
+          numberOfLines={4}
+          onChangeText={(text) => this.setState({ text })}
+          value={this.state.text}
+          filterPosts={this.filterPosts}
+        />
+
         <FlatList
-          data={this.state.blogPosts}
+          data={this.state.filteredPosts}
           renderItem={({ item }) => (
             <BlogPost {...item} />
           )}
